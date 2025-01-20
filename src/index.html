@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    EventId: <input type="text" name="eventId" id="eventId" value="123" />
+    Phone Number : <input type="text" name="phoneNumber" id="phoneNumber" value="+19256948120" />
+    <button onclick="makeCall()">make Call</button>
+  </div>
+</body>
+<script>
+  function makeCall() {
+    const url = "http://localhost:5600/genesys/events";
+    const message = {
+      type: 'ring'
+    };
+    message.eventId = document.getElementById('eventId').value;
+    message.connectionId = document.getElementById('eventId').value;
+    message.ANI = document.getElementById('phoneNumber').value;
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(message)
+    })
+  }
+</script>
+
+</html>
