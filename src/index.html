@@ -9,14 +9,14 @@
 
 <body>
   <div>
-    EventId: <input type="text" name="eventId" id="eventId" value="123" />
-    Phone Number : <input type="text" name="phoneNumber" id="phoneNumber" value="+19256948120" />
+    EventId: <input type="text" name="eventId" id="eventId" value="23453" />
+    Phone Number : <input type="text" name="phoneNumber" id="phoneNumber" value="+19256947326" />
     <button onclick="makeCall()">make Call</button>
   </div>
 </body>
 <script>
   function makeCall() {
-    const url = "https://genesysmockup-production.up.railway.app:5600/genesys/events";
+    const url = "https://genesysmockup-production.up.railway.app/genesys/events";
     const message = {
       type: 'ring'
     };
