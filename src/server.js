@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 
 app.post('/genesys/events', (req, res) => {
    const body = req.body;
-   console.log("Body"+body);
+   console.log("Body"+JSON.stringify(body));
    let shouldSendWsMessage = false;
    switch (body.type) {
       case 'initialize':
@@ -62,16 +62,16 @@ app.post('/genesys/events', (req, res) => {
 });
 
 let server = app.listen(5600, function () {
-   console.log("Express App running at http://127.0.0.1:5600/ ++");
+   console.log("Express App running at http://127.0.0.1:5600/ -- ");
 });
 
 const wss = new WebSocket.Server({ server, path: "/genesysWs" });
 
 wss.on("connection", (ws) => {
    clientWs = ws;
-     console.log("wss connection 72"+ws);
+     console.log("wss connection 72"+JSON.stringify(ws));
    ws.on("message", (message) => {
-       console.log("Message received line number 74"+message);
+       console.log("Message received line number 74"+JSON.stringify(message));
       let data = "Not Processed";
       try {
          const fusionData = JSON.parse(message);
