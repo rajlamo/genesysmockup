@@ -61,7 +61,7 @@ app.post('/genesys/events', (req, res) => {
 });
 
 let server = app.listen(5600, function () {
-   console.log("Express App running at http://127.0.0.1:5600/");
+   console.log("Express App running at http://127.0.0.1:5600/ ++");
 });
 
 const wss = new WebSocket.Server({ server, path: "/genesysWs" });
@@ -72,6 +72,7 @@ wss.on("connection", (ws) => {
       let data = "Not Processed";
       try {
          data = JSON.parse(message);
+         console.log("data value"+data+"-->Messge"+message);
          if(data.type === 'login' && data.username && data.region)
          {
             console.log('Login event received:', data.username, 'Region:', data.region); 
