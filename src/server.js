@@ -69,13 +69,14 @@ const wss = new WebSocket.Server({ server, path: "/genesysWs" });
 wss.on("connection", (ws) => {
    clientWs = ws;
    ws.on("message", (message) => {
+       console.log("Message received line number 72"+message);
       let data = "Not Processed";
       try {
-         data = JSON.parse(message);
-         console.log("data value"+data+"-->Messge"+message);
-         if(data.type === 'login' && data.username && data.region)
+         const fusionData = JSON.parse(message);
+         console.log("data value"+fusionData+"-->Messge"+message);
+         if(fusionData.type === 'login' && fusionData.username && fusionData.region)
          {
-            console.log('Login event received:', data.username, 'Region:', data.region); 
+            console.log('Login event received:', fusionData.username, 'Region:', fusionData.region); 
          }
       } catch (err) {
          console.log(`Error while parsing message : `, message);
