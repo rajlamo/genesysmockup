@@ -69,9 +69,9 @@ const wss = new WebSocket.Server({ server, path: "/genesysWs" });
 
 wss.on("connection", (ws) => {
    clientWs = ws;
-     console.log("wss connection 72"+JSON.stringify(ws));
+     console.log("wss connection 72"+ws);
    ws.on("message", (message) => {
-       console.log("Message received line number 74"+JSON.stringify(message));
+       console.log("Message received line number 74"+message);
       let data = "Not Processed";
       try {
          const fusionData = JSON.parse(message);
