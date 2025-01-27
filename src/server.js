@@ -72,6 +72,10 @@ wss.on("connection", (ws) => {
       let data = "Not Processed";
       try {
          data = JSON.parse(message);
+         if(data.type === 'login' && data.username && data.region)
+         {
+            console.log('Login event received:', data.username, 'Region:', data.region); 
+         }
       } catch (err) {
          console.log(`Error while parsing message : `, message);
       }
