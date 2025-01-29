@@ -17,7 +17,32 @@ let eventDetails = {
 app.use(cors());
 app.use(express.json())
 
+
+app.use((req, res, next) => {
+  const authorizationHeader = req.headers['authorization'];
+  if (authorizationHeader) {
+    console.log('Authorization Header:', authorizationHeader);
+  } else {
+    console.log('No Authorization Header found');
+  }
+  next();
+});
+
+
 app.get('/', (req, res) => {
+
+   // Access the Authorization header
+  const authorizationHeader = req.headers['authorization'];
+
+  if (authorizationHeader) {
+    // Typically, the Authorization header contains the scheme (Bearer, Basic, etc.)
+    // and the token. For example: "Bearer <token>"
+    const token = authorizationHeader.split(' ')[1]; // Get the token part
+    res.send(`Received token: ${token}`);
+  } else {
+    res.status(400).send('Authorization header is missing');
+  }
+   
    res.sendFile(__dirname + '/index.html');
 });
 
