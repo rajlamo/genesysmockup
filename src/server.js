@@ -27,12 +27,12 @@ app.use((req, res, next) => {
   }
   next();
 });
-
+*/
 
 app.get('/', (req, res) => {
 
    // Access the Authorization header
-  const authorizationHeader = req.headers['authorization'];
+  /*const authorizationHeader = req.headers['authorization'];
 
   if (authorizationHeader) {
     // Typically, the Authorization header contains the scheme (Bearer, Basic, etc.)
@@ -41,10 +41,10 @@ app.get('/', (req, res) => {
     res.send(`Received token: ${token}`);
   } else {
     res.status(400).send('Authorization header is missing');
-  }
+  } */
    
    res.sendFile(__dirname + '/index.html');
-}); */
+}); 
 
 app.post('/genesys/events', (req, res) => {
    const body = req.body;
