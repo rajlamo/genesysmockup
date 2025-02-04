@@ -17,7 +17,7 @@ let eventDetails = {
 app.use(cors());
 app.use(express.json())
 
-
+/*
 app.use((req, res, next) => {
   const authorizationHeader = req.headers['authorization'];
   if (authorizationHeader) {
@@ -28,7 +28,7 @@ app.use((req, res, next) => {
   next();
 });
 
-/*
+
 app.get('/', (req, res) => {
 
    // Access the Authorization header
