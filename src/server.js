@@ -28,7 +28,7 @@ app.use((req, res, next) => {
   next();
 });
 
-
+/*
 app.get('/', (req, res) => {
 
    // Access the Authorization header
@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
   }
    
    res.sendFile(__dirname + '/index.html');
-});
+}); */
 
 app.post('/genesys/events', (req, res) => {
    const body = req.body;
