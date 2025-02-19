@@ -65,7 +65,7 @@ app.post('/genesys/events', (req, res) => {
          shouldSendWsMessage = true;
          break;
       case 'makeCall':
-         eventDetails.direction = 'outbound';
+         eventDetails.direction = 'inbound'; // outbound
          eventDetails.ANI = body.toNumber;
          eventDetails.connectionId = body.connectionId;
          eventDetails.eventId = body.connectionId;
