@@ -61,6 +61,7 @@ app.post('/genesys/events', (req, res) => {
          eventDetails.ANI = body.ANI;
          eventDetails.eventId = body.eventId;
          eventDetails.connectionId = body.connectionId;
+         eventDetails.queueName = body.queueName;         
          eventDetails.direction = 'inbound';
          shouldSendWsMessage = true;
          break;
@@ -69,12 +70,14 @@ app.post('/genesys/events', (req, res) => {
          eventDetails.ANI = body.toNumber;
          eventDetails.connectionId = body.connectionId;
          eventDetails.eventId = body.connectionId;
+         eventDetails.queueName = body.queueName;  
          eventDetails.eventName = 'EventEstablished';
          shouldSendWsMessage = true;
          break;
       case 'Reject':
          eventDetails.connectionId = body.connectionId;
          eventDetails.eventName = 'EventReleased';
+         eventDetails.queueName = body.queueName;  
          shouldSendWsMessage = true;
          break;
       default:
