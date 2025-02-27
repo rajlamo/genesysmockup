@@ -9,8 +9,9 @@
 
 <body>
   <div>
-    EventId: <input type="text" name="eventId" id="eventId" value="23453" />
+    EventId: <input type="text" name="eventId" id="eventId" value="054512" />
     Phone Number : <input type="text" name="phoneNumber" id="phoneNumber" value="+19256947326" />
+	Queue Name : <input type="text" name="queueName" id="queueName" value="Cerner_Health" />
     <button onclick="makeCall()">make Call</button>
     <button onclick="acceptCall()">Accept Call</button>
 	  <button onclick="closeEvent()">Close Call</button>
@@ -25,6 +26,7 @@
     message.eventId = document.getElementById('eventId').value;
     message.connectionId = document.getElementById('eventId').value;
     message.ANI = document.getElementById('phoneNumber').value;
+   message.queueName = document.getElementById('queueName').value;
 
     fetch(url, {
       method: 'POST',
@@ -45,7 +47,7 @@
     message.eventId = document.getElementById('eventId').value;
     message.connectionId = document.getElementById('eventId').value;
     message.ANI = document.getElementById('phoneNumber').value;
-
+     message.queueName = document.getElementById('queueName').value;
     fetch(url, {
       method: 'POST',
       headers: {
@@ -65,6 +67,7 @@
     message.eventId = document.getElementById('eventId').value;
     message.connectionId = document.getElementById('eventId').value;
     message.ANI = document.getElementById('phoneNumber').value;
+      message.queueName = document.getElementById('queueName').value;
 
     fetch(url, {
       method: 'POST',
