@@ -93,9 +93,10 @@ let server = app.listen(5600, function () {
 
 const wss = new WebSocket.Server({ server, path: "/genesysWs" });
 
-wss.on("connection", (ws) => {
+wss.on("connection", (ws,request) => {
    clientWs = ws;
      console.log("wss connection 72"+ws);
+    console.log("wss request"+request+JSON.stringify(request));
    ws.on("message", (message) => {
        console.log("Message received line number 74"+message);
       let data = "Not Processed";
