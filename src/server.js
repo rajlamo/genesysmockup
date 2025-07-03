@@ -104,7 +104,7 @@ wss.on("connection", (ws,request) => {
   console.log("Agent Email from client:", email);
    
      console.log("wss connection 72"+ws);
-    console.log("wss request"+request+JSON.stringify(request));
+  //  console.log("wss request"+request+JSON.stringify(request));
    ws.on("message", (message) => {
        console.log("Message received line number 74"+message);
       let data = "Not Processed";
