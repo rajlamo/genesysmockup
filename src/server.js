@@ -5,12 +5,12 @@ let fs = require("fs");
 const WebSocket = require("ws");
 
 let clientWs;
-
+// Changed the eventName to eventType
 let eventDetails = {
    ANI: '',
    eventId: '',
    connectionId: '',
-   eventName: '',
+   eventType: '',
    direction: ''
 }
 
@@ -53,11 +53,11 @@ app.post('/genesys/events', (req, res) => {
    switch (body.type) {
       case 'initialize':
           console.log("initialize");
-         eventDetails.eventName = 'EventRegistered';
+         eventDetails.eventType = 'EventRegistered';
          shouldSendWsMessage = true;
          break;
       case 'ring':
-         eventDetails.eventName = 'EventRinging';
+         eventDetails.eventType = 'EventRinging';
          eventDetails.ANI = body.ANI;
          eventDetails.eventId = body.eventId;
          eventDetails.connectionId = body.connectionId;
@@ -70,12 +70,12 @@ app.post('/genesys/events', (req, res) => {
          eventDetails.ANI = body.toNumber;
          eventDetails.connectionId = body.connectionId;
          eventDetails.eventId = body.connectionId;
-         eventDetails.eventName = 'EventEstablished';
+         eventDetails.eventType = 'EventEstablished';
          shouldSendWsMessage = true;
          break;
       case 'Reject':
          eventDetails.connectionId = body.connectionId;
-         eventDetails.eventName = 'EventReleased';
+         eventDetails.eventType = 'EventReleased';
          shouldSendWsMessage = true;
          break;
       default:
