@@ -95,6 +95,13 @@ const wss = new WebSocket.Server({ server, path: "/genesysWs" });
 
 wss.on("connection", (ws,request) => {
    clientWs = ws;
+    const queryParams = url.parse(request.url, true).query;
+  const token = queryParams.token;
+  const email = queryParams.email;
+
+  console.log("Token from client:", token);
+  console.log("Agent Email from client:", email);
+   
      console.log("wss connection 72"+ws);
     console.log("wss request"+request+JSON.stringify(request));
    ws.on("message", (message) => {
